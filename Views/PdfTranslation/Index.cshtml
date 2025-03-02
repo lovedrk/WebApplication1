@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "PDF Translation";
+}
+
+<h1>PDF Translation</h1>
+
+<!-- 表单，用于上传PDF文件和选择目标语言 -->
+<form method="post" enctype="multipart/form-data" asp-controller="PdfTranslation" asp-action="Translate">
+    <div>
+        <label for="pdfFile">Upload PDF:</label>
+        <input type="file" id="pdfFile" name="pdfFile" />
+    </div>
+    <div>
+        <label for="targetLanguage">Target Language:</label>
+        <input type="text" id="targetLanguage" name="targetLanguage" />
+    </div>
+    <button type="submit">Translate</button>
+</form>
+
+@if (ViewBag.TranslatedFilePath != null)
+{
+    <div>
+        <a href="@ViewBag.TranslatedFilePath">Download Translated PDF</a>
+    </div>
+}
